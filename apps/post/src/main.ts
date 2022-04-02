@@ -13,6 +13,9 @@ async function bootstrap() {
       package: 'post',
       protoPath: join(__dirname, 'proto/post.proto'),
       url: `localhost:${PORT}`,
+      loader: {
+        keepCase: true, // FIXME: enable underscore, field_name do not work without this, must be fieldName
+      },
     },
   });
   (await app.startAllMicroservices()).listen(PORT, () =>

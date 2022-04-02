@@ -10,24 +10,19 @@ export class PostProtoRequestDto {
 }
 
 export class PostProtoResponseDto {
-  @Expose({ name: 'postUrl' })
   @IsString()
   @Type(() => String)
-  public postUrl: string;
+  public postId: string;
 
-  @Expose({ name: 'postTitle' })
   @IsString()
   @Type(() => String)
   public postTitle: string;
-}
 
-export interface PostProtoResponse {
-  // id: string;
-  // post_content: string;
-  url: string;
-  postTitle: string;
+  @IsString()
+  @Type(() => String)
+  public postUrl: string;
 }
 
 export interface IPostGrpcService {
-  findOne: (request: PostProtoRequestDto) => Observable<PostProtoResponse>;
+  findOne: (request: PostProtoRequestDto) => Observable<PostProtoResponseDto>;
 }

@@ -16,8 +16,9 @@ export class PostController {
   @GrpcMethod('PostsService', 'FindOne')
   public findOne({ id }: { id: string }) {
     const response = {
-      postUrl: id,
-      postTitle: this.postService.getHello(),
+      post_id: id,
+      post_title: this.postService.getHello(),
+      post_url: 'https://coder-question.com/cq-blog/50464',
     };
     return response;
   }
