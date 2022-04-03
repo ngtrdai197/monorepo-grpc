@@ -1,7 +1,7 @@
+import { GRPC_CONSTANT } from 'apps/post/src/constants/grpc.constant';
 import { Controller, Get } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { instanceToPlain, plainToInstance } from 'class-transformer';
-import { PostProtoResponseDto } from './dtos/post-proto.dto';
+import { instanceToPlain } from 'class-transformer';
 import { PostService } from './post.service';
 
 @Controller()
@@ -13,13 +13,12 @@ export class PostController {
     return this.postService.getHello();
   }
 
-  @GrpcMethod('PostsService', 'FindOne')
+  @GrpcMethod(
+    GRPC_CONSTANT.POST.SERVICE_NAME,
+    GRPC_CONSTANT.POST.METHODS.FIND_ONE,
+  )
   public findOne({ id }: { id: string }) {
-    const response = {
-      post_id: id,
-      post_title: this.postService.getHello(),
-      post_url: 'https://coder-question.com/cq-blog/50464',
-    };
-    return response;
+    const data = this.postService.findOne(id);
+    return instanceToPlain(data);
   }
 }

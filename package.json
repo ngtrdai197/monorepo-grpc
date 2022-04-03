@@ -24,6 +24,7 @@
     "@grpc/grpc-js": "^1.6.0",
     "@grpc/proto-loader": "^0.6.9",
     "@nestjs/common": "^8.0.0",
+    "@nestjs/config": "^2.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/microservices": "^8.4.3",
     "@nestjs/platform-express": "^8.0.0",
@@ -77,7 +78,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/grpc-client(|/.*)$": "<rootDir>/libs/grpc-client/src/$1"
+      "^@app/grpc-client(|/.*)$": "<rootDir>/libs/grpc-client/src/$1",
+      "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1"
     }
   }
 }

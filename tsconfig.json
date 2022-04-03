@@ -23,6 +23,12 @@
       ],
       "@app/grpc-client/*": [
         "libs/grpc-client/src/*"
+      ],
+      "@app/common": [
+        "libs/common/src"
+      ],
+      "@app/common/*": [
+        "libs/common/src/*"
       ]
     }
   }
